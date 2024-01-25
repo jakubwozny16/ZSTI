@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Formularz Ucznia i Książki</title>
+</head>
+<body>
+
+  <select id="formSelector" onchange="showForm()">
+    <option value="studentForm">Formularz Ucznia</option>
+    <option value="bookForm">Formularz Książki</option>
+  </select>
+
+  <form id="studentForm">
+    <h2>Dane Ucznia</h2>
+    <label for="firstName">Imię:</label>
+    <input type="text" id="firstName" name="firstName" required oninput="checkNameLength('firstName')">
+
+    <label for="lastName">Nazwisko:</label>
+    <input type="text" id="lastName" name="lastName" required oninput="checkNameLength('lastName')">
+
+    <label for="class">Klasa:</label>
+    <input type="text" id="class" name="class" required oninput="checkClassInput()">
+
+    <label for="birthdate">Data urodzenia:</label>
+    <input type="date" id="birthdate" name="birthdate" required oninput="checkBirthdate()">
+
+    <button type="button" onclick="submitStudentData()">Dodaj ucznia</button>
+  </form>
+
+  <form id="bookForm">
+    <h2>Dane Książki</h2>
+    <label for="author">Autor:</label>
+    <input type="text" id="author" name="author" pattern="[A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ]+"
+      title="Autor może zawierać tylko litery" required oninput="checkNameLength('author')">
+
+    <label for="title">Tytuł:</label>
+    <input type="text" id="title" name="title" required oninput="checkTitleInput()">
+
+    <label for="isbn">ISBN:</label>
+    <input type="text" id="isbn" name="isbn" pattern="[0-9]{13}"
+      title="ISBN powinien zawierać 13 cyfr" required oninput="checkIsbnInput()">
+
+    <label for="publishDate">Data wydania:</label>
+    <input type="date" id="publishDate" name="publishDate" required oninput="checkPublishDate()">
+
+    <button type="button" onclick="submitBookData()">Dodaj książkę</button>
+  </form>
+
+  <script src="index.js"></script>
+
+</body>
+</html>
